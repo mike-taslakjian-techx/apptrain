@@ -19,13 +19,14 @@ jobs:
             # 1. Navigate to your app folder
             cd /root/Mike/
 
-            # 2. Get the latest code from GitHub
+            # 2. Clone the repo
+            git clone git clone https://github.com/${{ github.repository }}.git .
+
+            # 3. Get the latest code from GitHub
             git fetch --all
             git checkout ${{ github.ref_name }}
             git pull origin ${{ github.ref_name }}
 
-            # 4. Start the app using the .env file from the vault folder
-            # --env-file tells Compose to use your extracted secrets
-            # --build ensures it rebuilds the images with the new code
+            # 5. Start the app using the .env file from the vault folder
             docker compose --env-file /root/Mike/vault/.env up -d --build
             
