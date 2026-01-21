@@ -20,7 +20,7 @@ jobs:
             cd /root/Mike/
 
             # 2. Clone the repo
-            git clone git clone https://github.com/${{ github.repository }}.git .
+            git clone https://github.com/mike-taslakjian-techx/apptrain .
 
             # 3. Get the latest code from GitHub
             git fetch --all
