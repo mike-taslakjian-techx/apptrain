@@ -24,9 +24,6 @@ jobs:
             git checkout ${{ github.ref_name }}
             git pull origin ${{ github.ref_name }}
 
-            # 3. Clean up old unused data to save disk space
-            docker system prune -f
-
             # 4. Start the app using the .env file from the vault folder
             # --env-file tells Compose to use your extracted secrets
             # --build ensures it rebuilds the images with the new code
