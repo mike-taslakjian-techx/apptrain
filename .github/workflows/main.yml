@@ -1,8 +1,8 @@
 name: Deploy to DEV
 on:
   push:
-    tags:
-      - 'dev-*'
+    branches:
+      - master
 
 jobs:
   deploy:
