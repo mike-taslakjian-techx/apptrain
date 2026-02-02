@@ -70,8 +70,11 @@ jobs:
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           passphrase: ${{ secrets.SSH_PASSPHRASE }}
           script: |
+            cd /root/Mike
 
-            cd /root/Mike/app
+            ./script.sh
+
+            cd app
             
             # docker container prune -a -f
             # docker image prune -a -f
