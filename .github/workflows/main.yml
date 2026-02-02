@@ -71,7 +71,7 @@ jobs:
           passphrase: ${{ secrets.SSH_PASSPHRASE }}
           script: |
 
-            cd /root/Mike
+            cd /root/Mike/app
             
             # docker container prune -a -f
             # docker image prune -a -f
