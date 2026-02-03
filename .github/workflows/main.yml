@@ -26,18 +26,23 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-buildx-
 
+      - name: SonarQube Scan
+        uses: sonarsource/sonarqube-scan-action@v3
+        env:
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+          SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
+        with:
+          args: >
+            -Dsonar.projectKey=apptrain-monorepo
+            -Dsonar.sources=.
+            -Dsonar.exclusions=**/node_modules/**,**/dist/**
+            -Dsonar.javascript.lcov.reportPaths=coverage/lcov.info
+
       - name: SonarQube Quality Gate
         uses: sonarsource/sonarqube-quality-gate-action@v2
         timeout-minutes: 5
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
- 
-      - name: Log in to GitHub Container Registry
-        uses: docker/login-action@v3
-        with:
-          registry: ghcr.io
-          username: ${{ github.actor }}
-          password: ${{ secrets.USR_TOKEN  }}
  
       - name: Set Image Tag
         run: |
